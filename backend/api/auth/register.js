@@ -8,6 +8,11 @@ import User from "../../models/User.js";
 export default async function handler(req, res) {
   
   try {
+    if (req.method !== "POST") {
+  return res.status(405).json({
+    message: "Only POST method allowed"
+  });
+}
     await connectDB(); 
     const { email, password } = req.body;
 
