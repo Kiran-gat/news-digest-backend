@@ -10,9 +10,9 @@ import fetch from "node-fetch";
 export default async function handler(req, res) {
   try {
     // Optional safety: allow only GET (cron uses GET)
-    if (req.method !== "GET") {
-      return res.status(405).json({ message: "Method not allowed" });
-    }
+    //if (req.method !== "GET") {
+      //return res.status(405).json({ message: "Method not allowed" });
+    //}
 
     // VERY IMPORTANT for serverless
     await connectDB();
