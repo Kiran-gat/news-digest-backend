@@ -6,8 +6,9 @@ import User from "../../models/User.js";
  */
 
 export default async function handler(req, res) {
-  await connectDB(); 
+  
   try {
+    await connectDB(); 
     const { email, password } = req.body;
 
     // 1. Basic validation

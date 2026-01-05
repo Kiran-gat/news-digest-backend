@@ -9,9 +9,10 @@ import fetch from "node-fetch";
 
 
 export default async function handler(req, res) {
-  await connectDB(); 
+  
   try {
     // 1. Verify JWT
+    await connectDB(); 
     const authHeader = req.headers.authorization;
     if (!authHeader) {
       return res.status(401).json({ message: "Token missing" });

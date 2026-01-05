@@ -6,8 +6,9 @@ import { verifyToken } from "../../lib/jwt.js";
  */
 
 export default async function handler(req, res) {
-  await connectDB(); 
+  
   try {
+    await connectDB(); 
     // 1. Get Authorization header
     const authHeader = req.headers.authorization;
 
