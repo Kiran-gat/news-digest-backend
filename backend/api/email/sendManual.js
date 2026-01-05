@@ -2,6 +2,7 @@ import User from "../../models/User.js";
 import { verifyToken } from "../../lib/jwt.js";
 import { fetchNewsByTopic } from "../../lib/news.js";
 import fetch from "node-fetch";
+import { connectDB } from "../../lib/db.js";
 
 /**
  * Manually send news digest email (with images)

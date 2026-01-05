@@ -1,6 +1,7 @@
 
 import User from "../../models/User.js";
 import { verifyToken } from "../../lib/jwt.js";
+import { connectDB } from "../../lib/db.js";
 
 /**
  * Save or update user's favorite topics

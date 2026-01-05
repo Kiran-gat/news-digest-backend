@@ -1,5 +1,6 @@
 import User from "../../models/User.js";
 import { verifyToken } from "../../lib/jwt.js";
+import { connectDB } from "../../lib/db.js";
 
 /**
  * Get logged-in user's profile

@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import User from "../../models/User.js";
 import { generateToken } from "../../lib/jwt.js";
-
+import { connectDB } from "../../lib/db.js";
 /**
  * Login user
  */

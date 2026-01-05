@@ -1,5 +1,7 @@
 import bcrypt from "bcrypt";
 import User from "../../models/User.js";
+import { connectDB } from "../../lib/db.js";
+
 
 /**
  * Register new user
