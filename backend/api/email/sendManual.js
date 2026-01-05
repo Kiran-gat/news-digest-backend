@@ -6,7 +6,10 @@ import fetch from "node-fetch";
 /**
  * Manually send news digest email (with images)
  */
-export const sendManualEmail = async (req, res) => {
+
+
+export default async function handler(req, res) {
+  await connectDB(); 
   try {
     // 1. Verify JWT
     const authHeader = req.headers.authorization;

@@ -1,10 +1,12 @@
 import bcrypt from "bcrypt";
-import User from "../../models/user.js";
+import User from "../../models/User.js";
 
 /**
  * Register new user
  */
-export const register = async (req, res) => {
+
+export default async function handler(req, res) {
+  await connectDB(); 
   try {
     const { email, password } = req.body;
 

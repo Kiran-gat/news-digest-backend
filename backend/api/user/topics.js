@@ -5,7 +5,9 @@ import { verifyToken } from "../../lib/jwt.js";
 /**
  * Save or update user's favorite topics
  */
-export const saveTopics = async (req, res) => {
+
+export default async function handler(req, res) {
+  await connectDB(); 
   try {
     // 1. Get token from header
     const authHeader = req.headers.authorization;

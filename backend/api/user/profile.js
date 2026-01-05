@@ -4,7 +4,9 @@ import { verifyToken } from "../../lib/jwt.js";
 /**
  * Get logged-in user's profile
  */
-export const profile = async (req, res) => {
+
+export default async function handler(req, res) {
+  await connectDB(); 
   try {
     // 1. Get Authorization header
     const authHeader = req.headers.authorization;

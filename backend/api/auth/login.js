@@ -1,11 +1,13 @@
 import bcrypt from "bcrypt";
-import User from "../../models/user.js";
+import User from "../../models/User.js";
 import { generateToken } from "../../lib/jwt.js";
 
 /**
  * Login user
  */
-export const login = async (req, res) => {
+
+export default async function handler(req, res) {
+  await connectDB(); 
   try {
     const { email, password } = req.body;
 
