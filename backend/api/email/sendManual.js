@@ -3,6 +3,7 @@ import { verifyToken } from "../../lib/jwt.js";
 import { fetchNewsByTopic } from "../../lib/news.js";
 import fetch from "node-fetch";
 import { connectDB } from "../../lib/db.js";
+import { applyCors } from "../../lib/cors.js";
 
 /**
  * Manually send news digest email (with images)
@@ -12,6 +13,9 @@ import { connectDB } from "../../lib/db.js";
 export default async function handler(req, res) {
   
   try {
+     // APPLY CORS FIRST
+  const isPreflight = applyCors(req, res);
+  if (isPreflight) return;
     // 1. Verify JWT
     await connectDB(); 
     const authHeader = req.headers.authorization;

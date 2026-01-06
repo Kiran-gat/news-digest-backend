@@ -1,12 +1,16 @@
 import User from "../../../models/User.js";
 import { verifyToken } from "../../../lib/jwt.js";
 import { connectDB } from "../../../lib/db.js";
+import { applyCors } from "../../lib/cors.js";
 
 /**
  * Add a single topic to user's topics array
  */
 export default async function handler(req, res) {
   try {
+     // APPLY CORS FIRST
+  const isPreflight = applyCors(req, res);
+  if (isPreflight) return;
     await connectDB();
 
     // 1. Get token

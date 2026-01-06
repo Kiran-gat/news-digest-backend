@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import User from "../../models/User.js";
 import { connectDB } from "../../lib/db.js";
-
+import { applyCors } from "../../lib/cors.js";
 
 /**
  * Register new user
@@ -10,6 +10,9 @@ import { connectDB } from "../../lib/db.js";
 export default async function handler(req, res) {
   
   try {
+      // APPLY CORS FIRST
+  const isPreflight = applyCors(req, res);
+  if (isPreflight) return;
     if (req.method !== "POST") {
   return res.status(405).json({
     message: "Only POST method allowed"

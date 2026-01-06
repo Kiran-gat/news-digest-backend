@@ -1,6 +1,7 @@
 import { connectDB } from "../../lib/db.js";
 import User from "../../models/User.js"; 
 import { fetchNewsByTopic } from "../../lib/news.js";
+import { applyCors } from "../../lib/cors.js";
 import fetch from "node-fetch";
 
 /**
@@ -15,6 +16,9 @@ export default async function handler(req, res) {
     //}
 
     // VERY IMPORTANT for serverless
+     // APPLY CORS FIRST
+  const isPreflight = applyCors(req, res);
+  if (isPreflight) return;
     await connectDB();
 
     console.log("Cron job started");

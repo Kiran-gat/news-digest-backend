@@ -1,6 +1,7 @@
 import User from "../../models/User.js";
 import { verifyToken } from "../../lib/jwt.js";
 import { connectDB } from "../../lib/db.js";
+import { applyCors } from "../../lib/cors.js";
 
 /**
  * Get logged-in user's profile
@@ -9,6 +10,9 @@ import { connectDB } from "../../lib/db.js";
 export default async function handler(req, res) {
   
   try {
+     // APPLY CORS FIRST
+  const isPreflight = applyCors(req, res);
+  if (isPreflight) return;
     await connectDB(); 
     // 1. Get Authorization header
     const authHeader = req.headers.authorization;

@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import User from "../../models/User.js";
 import { generateToken } from "../../lib/jwt.js";
 import { connectDB } from "../../lib/db.js";
+import { applyCors } from "../../lib/cors.js";
 /**
  * Login user
  */
@@ -9,6 +10,9 @@ import { connectDB } from "../../lib/db.js";
 export default async function handler(req, res) {
   
   try {
+     // APPLY CORS FIRST
+  const isPreflight = applyCors(req, res);
+  if (isPreflight) return;
     await connectDB(); 
     const { email, password } = req.body;
 
