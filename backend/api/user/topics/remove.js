@@ -1,7 +1,8 @@
 import User from "../../../models/User.js";
 import { verifyToken } from "../../../lib/jwt.js";
 import { connectDB } from "../../../lib/db.js";
-import { applyCors } from "../../lib/cors.js";
+import { applyCors } from "../../../lib/cors.js";
+
 
 /**
  * Remove a single topic from user's topics array
