@@ -20,7 +20,12 @@ const userSchema = new mongoose.Schema(
       type: [String], // Example: ["technology", "sports"]
       default: [],
     },
+    isSubscribed: {
+       type: Boolean,
+       default: true
+    }
   },
+    
   { timestamps: true }
 );
 

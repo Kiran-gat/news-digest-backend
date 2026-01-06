@@ -21,7 +21,8 @@ export default async function handler(req, res) {
 
     // 1. Fetch users who have topics
     const users = await User.find({
-      topics: { $exists: true, $not: { $size: 0 } }
+      topics: { $exists: true, $not: { $size: 0 } },
+      isSubscribed: true
     });
 
     if (users.length === 0) {

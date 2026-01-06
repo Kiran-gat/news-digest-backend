@@ -24,6 +24,13 @@ export default async function handler(req, res) {
 
     // 2. Get user
     const user = await User.findById(decoded.userId);
+
+      // NEW: Check email subscription status
+    if (!user.isSubscribed) {
+     return res.status(400).json({
+          message: "Email subscription is turned off"
+      });
+      }
     if (!user || user.topics.length === 0) {
       return res.status(400).json({ message: "No topics selected" });
     }
