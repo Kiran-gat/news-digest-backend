@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/api/cron/dailyDigest",
-      "schedule": "15 6 * * *"
+      "schedule": "0 */12 * * *"
     }
   ]
 }
